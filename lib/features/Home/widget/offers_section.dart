@@ -36,6 +36,7 @@ class _OffersSectionState extends State<OffersSection> {
         },
         itemCount: widget.offers.length,
         itemBuilder: (context, index) {
+          final offer = widget.offers[index];
           return Container(
             margin: EdgeInsets.only(right: 8),
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
@@ -80,13 +81,13 @@ class _OffersSectionState extends State<OffersSection> {
                         ),
                       ),
                       CustomText(
-                        text: widget.offers[index]['name'],
+                        text: offer.name,
                         size: 16,
                         color: Colors.white,
                         maxLines: 1,
                       ),
                       CustomText(
-                        text: widget.offers[index]['description'],
+                        text: offer.description,
                         size: 14,
                         color: Colors.white,
                         maxLines: 1,

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
+import 'package:luxora_app/features/Home/data/product_model.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
 class DetailBottomsheet extends StatelessWidget {
-  const DetailBottomsheet({super.key});
+  const DetailBottomsheet({super.key, required this.productModel});
+  final ProductModel productModel;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class DetailBottomsheet extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(text: "Total :", size: 14),
-              CustomText(text: "\$1,280", size: 20),
+              CustomText(text: "${productModel.price}\$", size: 20),
             ],
           ),
           Spacer(),

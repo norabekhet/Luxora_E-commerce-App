@@ -1,6 +1,14 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
+import 'package:luxora_app/features/Home/cubit/category_cubit/cateegory_cubit.dart';
+import 'package:luxora_app/features/Home/cubit/category_cubit/category_states.dart';
+import 'package:luxora_app/features/Home/cubit/offers_cubit/offers_cubit.dart';
+import 'package:luxora_app/features/Home/cubit/offers_cubit/offers_states.dart';
+import 'package:luxora_app/features/Home/cubit/product_cubit/product_cubit.dart';
+import 'package:luxora_app/features/Home/cubit/product_cubit/product_states.dart';
 import 'package:luxora_app/features/Home/widget/category_section.dart';
 import 'package:luxora_app/features/Home/widget/custom_appBar.dart';
 import 'package:luxora_app/features/Home/widget/offers_section.dart';
@@ -15,73 +23,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<Map<String, dynamic>> offers = [
-    {
-      "name": "Electronics Offer 1",
-      "description": "a limited time offer on electronics category",
-    },
-    {
-      "name": "Electronics Offer 2",
-      "description": "a limited time offer on electronics category",
-    },
-    {
-      "name": "Electronics Offer 3",
-      "description": "a limited time offer on electronics category",
-    },
-  ];
-  final List<String> category = [
-    "All",
-    "clothing",
-    'bags',
-    "shoes",
-    'clothing',
-    'bags',
-    "shoes",
-    'clothing',
-  ];
-  final List<Map<String, dynamic>> products = [
-    {
-      "name": "Genuine Leather Jacket",
-      "description":
-          "Premium genuine leather jacket with a modern design, soft inner lining, durable craftsmanship, and a comfortable fit. Perfect for casual outings and cold weather.",
-      "coverPictureUrl":
-          "https://media.istockphoto.com/id/1359676849/photo/hanging-leather-jacket-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=OqhcmN7RxHDDWJ-RrNHIzEvJfXwRsJ8POZwUvIrF-BA=",
-      "price": 2499.00,
-    },
-    {
-      "name": "Genuine Leather Jacket",
-      "description":
-          "Premium genuine leather jacket with a modern design, soft inner lining, durable craftsmanship, and a comfortable fit. Perfect for casual outings and cold weather.",
-      "coverPictureUrl":
-          "https://media.istockphoto.com/id/1359676849/photo/hanging-leather-jacket-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=OqhcmN7RxHDDWJ-RrNHIzEvJfXwRsJ8POZwUvIrF-BA=",
-      "price": 2499.00,
-    },
-    {
-      "name": "Genuine Leather Jacket",
-      "description":
-          "Premium genuine leather jacket with a modern design, soft inner lining, durable craftsmanship, and a comfortable fit. Perfect for casual outings and cold weather.",
-      "coverPictureUrl":
-          "https://media.istockphoto.com/id/1359676849/photo/hanging-leather-jacket-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=OqhcmN7RxHDDWJ-RrNHIzEvJfXwRsJ8POZwUvIrF-BA=",
-
-      "price": 2499.00,
-    },
-    {
-      "name": "Genuine Leather Jacket",
-      "description":
-          "Premium genuine leather jacket with a modern design, soft inner lining, durable craftsmanship, and a comfortable fit. Perfect for casual outings and cold weather.",
-      "coverPictureUrl":
-          "https://media.istockphoto.com/id/1359676849/photo/hanging-leather-jacket-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=OqhcmN7RxHDDWJ-RrNHIzEvJfXwRsJ8POZwUvIrF-BA=",
-      "price": 2499.00,
-    },
-    {
-      "name": "Genuine Leather Jacket",
-      "description":
-          "Premium genuine leather jacket with a modern design, soft inner lining, durable craftsmanship, and a comfortable fit. Perfect for casual outings and cold weather.",
-      "coverPictureUrl":
-          "https://media.istockphoto.com/id/1359676849/photo/hanging-leather-jacket-interior.webp?a=1&b=1&s=612x612&w=0&k=20&c=OqhcmN7RxHDDWJ-RrNHIzEvJfXwRsJ8POZwUvIrF-BA=",
-      "price": 2499.00,
-    },
-  ];
   int currentPage = 0;
 
   @override
@@ -107,7 +48,21 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              OffersSection(offers: offers, currentPage: currentPage),
+              BlocBuilder<OffersCubit, OffersStates>(
+                builder: (context, state) {
+                  if (state is OffersLoading) {
+                    return Center(child: CupertinoActivityIndicator());
+                  } else if (state is OffersSuccess) {
+                    return OffersSection(
+                      offers: context.read<OffersCubit>().offers,
+                      currentPage: currentPage,
+                    );
+                  } else if (state is OffersFailure) {
+                    return Text(state.message);
+                  }
+                  return SizedBox();
+                },
+              ),
               Gap(24),
               //category
               Row(
@@ -123,7 +78,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
               Gap(8),
-              CategorySection(category: category),
+              BlocBuilder<CateegoryCubit, CategoryStates>(
+                builder: (context, state) {
+                  if (state is CategoryLoading) {
+                    return Center(child: CupertinoActivityIndicator());
+                  } else if (state is CategorySuccess) {
+                    return CategorySection(
+                      category: context.read<CateegoryCubit>().category,
+                    );
+                  } else if (state is CategoryFailure) {
+                    return Center(child: Text(state.message));
+                  }
+                  return SizedBox();
+                },
+              ),
               Gap(24),
               //products
               Row(
@@ -138,7 +106,20 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
-              ProductSection(products: products),
+              BlocBuilder<ProductCubit, ProductStates>(
+                builder: (context, state) {
+                  if (state is ProductLoading) {
+                    return Center(child: CupertinoActivityIndicator());
+                  } else if (state is ProductSuccess) {
+                    return ProductSection(
+                      products: context.read<ProductCubit>().products,
+                    );
+                  } else if (state is ProductFailure) {
+                    return Center(child: Text(state.message));
+                  }
+                  return SizedBox();
+                },
+              ),
             ],
           ),
         ),

@@ -24,7 +24,10 @@ class AuthRepo {
         await PrefHelper.saveTokens(
           accessToken: user.accessToken!,
           refreshToken: user.refreshToken!,
+          expiresAt: user.expiresAtUtc!,
         );
+        print('Access saved: ${await PrefHelper.getAccessToken() != null}');
+        print('Refresh saved: ${await PrefHelper.getRefreshToken() != null}');
       }
       return user;
     } on DioException catch (e) {
@@ -73,5 +76,14 @@ class AuthRepo {
     } catch (e) {
       throw ApiError(message: e.toString());
     }
+  }
+
+  // refresh token
+  Future<UserModel> refreshToken(String refreshToken) async {
+    final response = await apiService.post('/api/auth/refresh-token', {
+      'refreshToken': refreshToken,
+      'useCookies': false,
+    });
+    return UserModel.fromjson(response);
   }
 }

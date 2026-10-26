@@ -7,7 +7,6 @@ import 'package:luxora_app/features/Auth/cubit/auth_cubit.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_states.dart';
 import 'package:luxora_app/features/Auth/view/login_screen.dart';
 import 'package:luxora_app/features/Auth/widget/custom_button.dart';
-import 'package:luxora_app/features/Home/view/home_screen.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
 class VerifyEmailScreen extends StatefulWidget {

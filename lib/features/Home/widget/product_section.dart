@@ -1,13 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/features/Home/view/details_screen.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
-class ProductSection extends StatelessWidget {
+class ProductSection extends StatefulWidget {
   const ProductSection({super.key, required this.products});
   final List products;
 
+  @override
+  State<ProductSection> createState() => _ProductSectionState();
+}
+
+class _ProductSectionState extends State<ProductSection> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -15,17 +21,18 @@ class ProductSection extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: .82,
+        childAspectRatio: .76,
       ),
-      itemCount: products.length,
+      itemCount: widget.products.length,
       itemBuilder: (context, index) {
+        final product = widget.products[index];
         return GestureDetector(
           onTap: () {
             Navigator.push(
               context,
               MaterialPageRoute(
                 builder: (context) {
-                  return DetailsScreen();
+                  return DetailsScreen(productModel: product);
                 },
               ),
             );
@@ -39,26 +46,32 @@ class ProductSection extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.network(
-                    products[index]['coverPictureUrl'],
-                    fit: BoxFit.cover,
+                  ClipRRect(
+                    borderRadius: BorderRadiusGeometry.circular(10),
+                    child: Image.network(
+                      product.image,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      height: 120,
+                    ),
                   ),
+                  Gap(6),
                   CustomText(
                     weight: FontWeight.w600,
                     size: 16,
-                    text: products[index]["name"],
+                    text: product.name,
                     maxLines: 1,
                   ),
                   CustomText(
                     weight: FontWeight.w400,
                     size: 14,
-                    text: products[index]["description"],
+                    text: product.description,
                     maxLines: 1,
                   ),
                   Spacer(),
                   Row(
                     children: [
-                      CustomText(text: '${products[index]["price"]}', size: 14),
+                      CustomText(text: '${product.price}\$', size: 14),
                       Spacer(),
                       IconButton(
                         onPressed: () {},

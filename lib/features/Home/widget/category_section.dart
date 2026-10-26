@@ -19,6 +19,7 @@ class _CategorySectionState extends State<CategorySection> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: List.generate(widget.category.length, (index) {
+          final category = widget.category[index];
           return GestureDetector(
             onTap: () {
               setState(() {
@@ -42,7 +43,7 @@ class _CategorySectionState extends State<CategorySection> {
                     : AppColors.primary,
               ),
               child: CustomText(
-                text: widget.category[index],
+                text: category.name,
                 color: selected != index ? Colors.black54 : Colors.white,
                 size: 16,
               ),
