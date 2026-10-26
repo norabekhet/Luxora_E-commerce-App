@@ -34,7 +34,15 @@ class DetailBottomsheet extends StatelessWidget {
                   borderRadius: BorderRadiusGeometry.circular(15),
                 ),
               ),
-              onPressed: () {},
+              onPressed: () {
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    backgroundColor: AppColors.primary,
+                    behavior: SnackBarBehavior.floating,
+                    content: Text("Producr Added to Cart Successfuly"),
+                  ),
+                );
+              },
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
