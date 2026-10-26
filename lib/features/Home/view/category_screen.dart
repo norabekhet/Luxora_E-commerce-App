@@ -14,19 +14,22 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       appBar: CustomAppbar(title: "Luxora"),
       body: SafeArea(
-        child: BlocBuilder<CateegoryCubit, CategoryStates>(
-          builder: (context, state) {
-            if (state is CategoryLoading) {
-              return Center(child: CupertinoActivityIndicator());
-            } else if (state is CategorySuccess) {
-              return CategoryCards(
-                category: context.read<CateegoryCubit>().category,
-              );
-            } else if (state is CategoryFailure) {
-              return Center(child: Text(state.message));
-            }
-            return SizedBox();
-          },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: BlocBuilder<CateegoryCubit, CategoryStates>(
+            builder: (context, state) {
+              if (state is CategoryLoading) {
+                return Center(child: CupertinoActivityIndicator());
+              } else if (state is CategorySuccess) {
+                return CategoryCards(
+                  category: context.read<CateegoryCubit>().category,
+                );
+              } else if (state is CategoryFailure) {
+                return Center(child: Text(state.message));
+              }
+              return SizedBox();
+            },
+          ),
         ),
       ),
     );

@@ -18,7 +18,7 @@ class _CategoryCardsState extends State<CategoryCards> {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: .8,
+        childAspectRatio: .73,
       ),
       itemCount: widget.category.length,
       itemBuilder: (context, index) {
@@ -66,7 +66,7 @@ class _CategoryCardsState extends State<CategoryCards> {
                     IconButton(
                       onPressed: () {},
                       icon: Icon(
-                        CupertinoIcons.star,
+                        CupertinoIcons.star_fill,
                         color: AppColors.primary,
                         size: 14,
                       ),
