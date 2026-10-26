@@ -27,7 +27,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return Scaffold(
       body: BlocListener<AuthCubit, AuthStates>(
         listener: (context, state) {
-          if (state is AuthSuccess) {
+          if (state is LoginSuccess) {
             Navigator.pushReplacement(
               context,
               MaterialPageRoute(
@@ -38,7 +38,7 @@ class _LoginScreenState extends State<LoginScreen> {
             );
           }
 
-          if (state is AuthFailure) {
+          if (state is LoginFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 backgroundColor: Colors.red.shade800,
@@ -113,9 +113,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       BlocBuilder<AuthCubit, AuthStates>(
                         builder: (context, state) {
                           return CustomButton(
-                            text: state is AuthLoading ? "Loading" : "Sign in",
+                            text: state is LoginLoading ? "Loading" : "Sign in",
                             onpressed: () {
-                              state is AuthLoading
+                              state is LoginLoading
                                   ? null
                                   : context.read<AuthCubit>().login(
                                       email: emailController.text.trim(),

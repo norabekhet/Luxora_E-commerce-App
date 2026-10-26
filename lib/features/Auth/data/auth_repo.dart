@@ -35,7 +35,6 @@ class AuthRepo {
   }
 
   //register
-
   Future<String> register({
     required String firstName,
     required String lastName,

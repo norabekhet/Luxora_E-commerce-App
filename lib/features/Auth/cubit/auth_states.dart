@@ -1,12 +1,23 @@
 abstract class AuthStates {}
 
-class AuthInitial extends AuthStates {}
+class LoginInitial extends AuthStates {}
 
-class AuthLoading extends AuthStates {}
+class LoginLoading extends AuthStates {}
 
-class AuthSuccess extends AuthStates {}
+class LoginSuccess extends AuthStates {}
 
-class AuthFailure extends AuthStates {
+class LoginFailure extends AuthStates {
   final String message;
-  AuthFailure(this.message);
+  LoginFailure(this.message);
+}
+
+class SignupInitial extends AuthStates {}
+
+class SignupLoading extends AuthStates {}
+
+class SignupSuccess extends AuthStates {}
+
+class SignupFailure extends AuthStates {
+  final String message;
+  SignupFailure(this.message);
 }
