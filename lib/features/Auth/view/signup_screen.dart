@@ -34,7 +34,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return VerifyEmailScreen();
+                    return VerifyEmailScreen(
+                      email: emailController.text.trim(),
+                    );
                   },
                 ),
               );

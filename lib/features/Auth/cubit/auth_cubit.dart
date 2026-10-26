@@ -47,4 +47,19 @@ class AuthCubit extends Cubit<AuthStates> {
       emit(SignupFailure(errorMessage));
     }
   }
+
+  //Verify Email
+  Future verifyEmail({required String email, required String otp}) async {
+    emit(VerifyLoading());
+    try {
+      await authRepo.verifyEmail(email: email, otp: otp);
+      emit(VerifySuccess());
+    } catch (e) {
+      String errorMessage = "Something went wrong";
+      if (e is ApiError) {
+        errorMessage = e.message;
+      }
+      emit(VerifyFailure(errorMessage));
+    }
+  }
 }

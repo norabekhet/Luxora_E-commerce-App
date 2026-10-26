@@ -21,3 +21,14 @@ class SignupFailure extends AuthStates {
   final String message;
   SignupFailure(this.message);
 }
+
+class VerifyInitial extends AuthStates {}
+
+class VerifyLoading extends AuthStates {}
+
+class VerifySuccess extends AuthStates {}
+
+class VerifyFailure extends AuthStates {
+  final String message;
+  VerifyFailure(this.message);
+}
