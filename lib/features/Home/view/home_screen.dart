@@ -9,6 +9,7 @@ import 'package:luxora_app/features/Home/cubit/offers_cubit/offers_cubit.dart';
 import 'package:luxora_app/features/Home/cubit/offers_cubit/offers_states.dart';
 import 'package:luxora_app/features/Home/cubit/product_cubit/product_cubit.dart';
 import 'package:luxora_app/features/Home/cubit/product_cubit/product_states.dart';
+import 'package:luxora_app/features/Home/view/category_screen.dart';
 import 'package:luxora_app/features/Home/widget/category_section.dart';
 import 'package:luxora_app/features/Home/widget/custom_appBar.dart';
 import 'package:luxora_app/features/Home/widget/offers_section.dart';
@@ -69,7 +70,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   CustomText(text: "Shop by Category", size: 20),
                   Spacer(),
-                  CustomText(text: "View All", size: 14),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) {
+                            return CategoryScreen();
+                          },
+                        ),
+                      );
+                    },
+                    child: CustomText(text: "View All", size: 14),
+                  ),
                   Icon(
                     Icons.arrow_forward_ios,
                     size: 14,
