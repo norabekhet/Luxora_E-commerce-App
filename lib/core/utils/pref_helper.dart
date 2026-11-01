@@ -37,4 +37,9 @@ class PrefHelper {
     await prefs.remove(_refreshTokenKey);
     await prefs.remove(_expiresAtKey);
   }
+
+  static Future<bool> isLoggedIn() async {
+    final refreshToken = await getRefreshToken();
+    return refreshToken != null && refreshToken.isNotEmpty;
+  }
 }

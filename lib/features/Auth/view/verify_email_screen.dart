@@ -27,6 +27,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: SafeArea(
         child: BlocListener<AuthCubit, AuthStates>(
           listener: (context, state) {
@@ -104,7 +105,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
                         ),
                         child: Center(
                           child: CustomText(
-                            text: "name@domain.com",
+                            text: widget.email,
                             size: 16,
                             weight: FontWeight.w400,
                           ),

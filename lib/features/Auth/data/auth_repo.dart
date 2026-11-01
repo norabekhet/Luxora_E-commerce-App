@@ -1,6 +1,4 @@
-import 'package:dio/dio.dart';
 import 'package:luxora_app/core/network/api_error.dart';
-import 'package:luxora_app/core/network/api_exception.dart';
 import 'package:luxora_app/core/network/api_service.dart';
 import 'package:luxora_app/core/utils/pref_helper.dart';
 import 'package:luxora_app/features/Auth/data/user_model.dart';
@@ -30,8 +28,8 @@ class AuthRepo {
         print('Refresh saved: ${await PrefHelper.getRefreshToken() != null}');
       }
       return user;
-    } on DioException catch (e) {
-      throw ApiException.handleError(e);
+    } on ApiError {
+      rethrow;
     } catch (e) {
       throw ApiError(message: e.toString());
     }
@@ -52,8 +50,8 @@ class AuthRepo {
         "lastName": lastName,
       });
       return response['message'] as String;
-    } on DioException catch (e) {
-      throw ApiException.handleError(e);
+    } on ApiError {
+      rethrow;
     } catch (e) {
       throw ApiError(message: e.toString());
     }
@@ -71,19 +69,10 @@ class AuthRepo {
         "otp": otp,
       });
       return response as String;
-    } on DioException catch (e) {
-      throw ApiException.handleError(e);
+    } on ApiError {
+      rethrow;
     } catch (e) {
       throw ApiError(message: e.toString());
     }
-  }
-
-  // refresh token
-  Future<UserModel> refreshToken(String refreshToken) async {
-    final response = await apiService.post('/api/auth/refresh-token', {
-      'refreshToken': refreshToken,
-      'useCookies': false,
-    });
-    return UserModel.fromjson(response);
   }
 }

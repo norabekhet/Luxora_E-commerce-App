@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 

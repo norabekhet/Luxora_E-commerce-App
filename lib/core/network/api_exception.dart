@@ -30,7 +30,11 @@ class ApiException {
         return ApiError(message: 'Secure connection failed.');
 
       case DioExceptionType.transformTimeout:
-        return ApiError(message: 'Processing the response took too long.');
+        return ApiError(
+          message:
+              error.error?.toString() ??
+              'Processing the response took too long.',
+        );
 
       case DioExceptionType.unknown:
         return ApiError(message: 'Something went wrong. Please try again.');

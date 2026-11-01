@@ -36,8 +36,8 @@ class HomeRepo {
         offers.add(OffersModel.fromjson(element));
       }
       return offers;
-    } on DioException catch (e) {
-      throw ApiException.handleError(e);
+    } on ApiError {
+      rethrow;
     } catch (e) {
       throw ApiError(message: e.toString());
     }
@@ -53,8 +53,8 @@ class HomeRepo {
         categories.add(CategoryModel.fromjson(element));
       }
       return categories;
-    } on DioException catch (e) {
-      throw ApiException.handleError(e);
+    } on ApiError {
+      rethrow;
     } catch (e) {
       throw ApiError(message: e.toString());
     }
