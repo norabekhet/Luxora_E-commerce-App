@@ -20,11 +20,7 @@ class DetailBottomsheet extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomText(text: "Total :", size: 14),
-              CustomText(
-                text: "${productModel.price}\$",
-                size: 20,
-                maxLines: 1,
-              ),
+              CustomText(text: "${productModel.price}\$", size: 20),
             ],
           ),
           Spacer(),

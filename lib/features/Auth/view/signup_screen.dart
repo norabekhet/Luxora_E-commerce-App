@@ -37,16 +37,6 @@ class _SignupScreenState extends State<SignupScreen> {
                   Routes.verifyEmailScreen,
                   arguments: emailController.text.trim(),
                 );
-                // Navigator.pushReplacement(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) {
-                //       return VerifyEmailScreen(
-                //         email: emailController.text.trim(),
-                //       );
-                //     },
-                //   ),
-                // );
               } else if (state is SignupFailure) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
