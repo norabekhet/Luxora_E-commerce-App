@@ -1,10 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
 class CustomTextField extends StatefulWidget {
-  CustomTextField({
+  const CustomTextField({
     super.key,
     this.prefixIcon,
     required this.hint,
@@ -29,7 +29,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CustomText(text: widget.label, size: 14),
+        CustomText(text: widget.label, size: 14.sp),
         TextFormField(
           controller: widget.controller,
           style: TextStyle(
@@ -37,11 +37,15 @@ class _CustomTextFieldState extends State<CustomTextField> {
             fontWeight: FontWeight.w500,
           ),
           cursorColor: AppColors.primary,
-          cursorHeight: 14,
+          cursorHeight: 14.h,
           obscureText: widget.isPassword == true && isObscure,
           decoration: InputDecoration(
             prefixIcon: widget.prefixIcon != null
-                ? Icon(widget.prefixIcon, size: 18, color: AppColors.secondry)
+                ? Icon(
+                    widget.prefixIcon,
+                    size: 18.sp,
+                    color: AppColors.secondry,
+                  )
                 : null,
             suffixIcon: widget.isPassword == true
                 ? IconButton(
@@ -53,12 +57,12 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     icon: isObscure
                         ? Icon(
                             Icons.visibility,
-                            size: 18,
+                            size: 18.r,
                             color: AppColors.secondry,
                           )
                         : Icon(
                             Icons.visibility_off,
-                            size: 18,
+                            size: 18.r,
                             color: AppColors.secondry,
                           ),
                   )
@@ -66,18 +70,18 @@ class _CustomTextFieldState extends State<CustomTextField> {
             hint: CustomText(
               text: widget.hint,
               color: AppColors.secondry,
-              size: 14,
+              size: 14.sp,
               weight: FontWeight.w400,
             ),
-            contentPadding: EdgeInsets.only(left: 10),
+            contentPadding: EdgeInsets.only(left: 10.w),
             fillColor: AppColors.textField,
             filled: true,
             enabledBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: BorderSide.none,
             ),
             focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
               borderSide: BorderSide.none,
             ),
           ),

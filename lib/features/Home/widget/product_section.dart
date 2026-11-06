@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/core/routing/routes.dart';
@@ -21,7 +22,7 @@ class _ProductSectionState extends State<ProductSection> {
       physics: NeverScrollableScrollPhysics(),
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: .76,
+        childAspectRatio: .75,
       ),
       itemCount: widget.products.length,
       itemBuilder: (context, index) {
@@ -39,43 +40,43 @@ class _ProductSectionState extends State<ProductSection> {
             elevation: 1.5,
             color: Colors.white,
             child: Padding(
-              padding: const EdgeInsets.all(12),
+              padding: EdgeInsets.all(12.r),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadiusGeometry.circular(10),
+                    borderRadius: BorderRadiusGeometry.circular(10.r),
                     child: Image.network(
                       product.image,
                       fit: BoxFit.cover,
                       width: double.infinity,
-                      height: 120,
+                      height: 120.h,
                     ),
                   ),
-                  Gap(6),
+                  Gap(6.h),
                   CustomText(
                     weight: FontWeight.w600,
-                    size: 16,
+                    size: 14.sp,
                     text: product.name,
                     maxLines: 1,
                   ),
                   CustomText(
                     weight: FontWeight.w400,
-                    size: 14,
+                    size: 12.sp,
                     text: product.description,
                     maxLines: 1,
                   ),
                   Spacer(),
                   Row(
                     children: [
-                      CustomText(text: '${product.price}\$', size: 14),
+                      CustomText(text: '${product.price}\$', size: 12.sp),
                       Spacer(),
                       IconButton(
                         onPressed: () {},
                         icon: Icon(
                           CupertinoIcons.heart,
                           color: AppColors.primary,
-                          size: 20,
+                          size: 20.r,
                         ),
                       ),
                     ],

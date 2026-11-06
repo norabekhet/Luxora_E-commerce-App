@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/core/routing/routes.dart';
@@ -32,19 +33,19 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: CustomAppbar(title: 'Luxora'),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               //offers
               Row(
                 children: [
-                  CustomText(text: "Exclusive Offers", size: 20),
+                  CustomText(text: "Exclusive Offers", size: 20.sp),
                   Spacer(),
-                  CustomText(text: "View All", size: 14),
+                  CustomText(text: "View All", size: 14.sp),
                   Icon(
                     Icons.arrow_forward_ios,
-                    size: 14,
+                    size: 14.r,
                     color: AppColors.primary,
                   ),
                 ],
@@ -64,26 +65,26 @@ class _HomeScreenState extends State<HomeScreen> {
                   return SizedBox();
                 },
               ),
-              Gap(24),
+              Gap(24.h),
               //category
               Row(
                 children: [
-                  CustomText(text: "Shop by Category", size: 20),
+                  CustomText(text: "Shop by Category", size: 20.sp),
                   Spacer(),
                   GestureDetector(
                     onTap: () {
                       Navigator.pushNamed(context, Routes.categoryScreen);
                     },
-                    child: CustomText(text: "View All", size: 14),
+                    child: CustomText(text: "View All", size: 14.sp),
                   ),
                   Icon(
                     Icons.arrow_forward_ios,
-                    size: 14,
+                    size: 14.r,
                     color: AppColors.primary,
                   ),
                 ],
               ),
-              Gap(8),
+              Gap(8.h),
               BlocBuilder<CateegoryCubit, CategoryStates>(
                 builder: (context, state) {
                   if (state is CategoryLoading) {
@@ -98,16 +99,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   return SizedBox();
                 },
               ),
-              Gap(24),
+              Gap(24.h),
               //products
               Row(
                 children: [
-                  CustomText(text: "Featured Products", size: 20),
+                  CustomText(text: "Featured Products", size: 20.sp),
                   Spacer(),
-                  CustomText(text: "View All", size: 14),
+                  CustomText(text: "View All", size: 14.sp),
                   Icon(
                     Icons.arrow_forward_ios,
-                    size: 14,
+                    size: 14.r,
                     color: AppColors.primary,
                   ),
                 ],

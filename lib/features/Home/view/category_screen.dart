@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxora_app/features/Home/cubit/category_cubit/cateegory_cubit.dart';
 import 'package:luxora_app/features/Home/cubit/category_cubit/category_states.dart';
 import 'package:luxora_app/features/Home/widget/category_cards.dart';
@@ -15,7 +16,7 @@ class CategoryScreen extends StatelessWidget {
       appBar: CustomAppbar(title: "Luxora"),
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: 15.w),
           child: BlocBuilder<CateegoryCubit, CategoryStates>(
             builder: (context, state) {
               if (state is CategoryLoading) {

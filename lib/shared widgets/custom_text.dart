@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 
 class CustomText extends StatelessWidget {
@@ -23,7 +24,7 @@ class CustomText extends StatelessWidget {
       maxLines: maxLines != null ? 1 : null,
       overflow: maxLines != null ? TextOverflow.ellipsis : TextOverflow.fade,
       style: TextStyle(
-        fontSize: size ?? 24,
+        fontSize: size ?? 24.sp,
         fontWeight: weight ?? FontWeight.w500,
         color: color ?? AppColors.primary,
       ),

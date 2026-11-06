@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/features/Home/data/product_model.dart';
 import 'package:luxora_app/features/Home/widget/color_card.dart';
@@ -22,19 +23,19 @@ class _DetailsScreenState extends State<DetailsScreen> {
       appBar: CustomAppbar(title: "Product Detail", isLeading: true),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
+          padding: EdgeInsets.symmetric(horizontal: 20.w),
           child: Column(
             children: [
               ClipRRect(
-                borderRadius: BorderRadiusGeometry.circular(15),
+                borderRadius: BorderRadiusGeometry.circular(15.r),
                 child: Image.network(
                   widget.productModel.image,
                   fit: BoxFit.cover,
-                  height: 350,
+                  height: 350.h,
                   width: double.infinity,
                 ),
               ),
-              Gap(16),
+              Gap(16.h),
               Row(
                 children: [
                   Row(
@@ -42,40 +43,50 @@ class _DetailsScreenState extends State<DetailsScreen> {
                       return Image.asset(
                         "assets/stars.png",
                         fit: BoxFit.cover,
-                        height: 15,
-                        width: 15,
+                        height: 15.h,
+                        width: 15.w,
                       );
                     }),
                   ),
-                  Gap(6),
+                  Gap(6.w),
                   CustomText(
                     text:
                         "${widget.productModel.rating} (${widget.productModel.reviewsCount} Atelier Reviews)",
-                    size: 14,
+                    size: 14.sp,
                   ),
                 ],
               ),
-              Gap(16),
-              CustomText(text: widget.productModel.name, color: Colors.black),
-              Gap(6),
+              Gap(16.h),
+              CustomText(
+                text: widget.productModel.name,
+                size: 22.sp,
+                color: Colors.black,
+              ),
+              Gap(6.h),
               Row(
                 children: [
-                  CustomText(text: "${widget.productModel.price}\$"),
-                  Gap(6),
-                  CustomText(text: "USD • Duties & Taxes Included", size: 14),
+                  CustomText(
+                    text: "${widget.productModel.price}\$",
+                    size: 20.sp,
+                  ),
+                  Gap(6.w),
+                  CustomText(
+                    text: "USD • Duties & Taxes Included",
+                    size: 14.sp,
+                  ),
                 ],
               ),
-              Gap(12),
+              Gap(12.h),
               CustomText(
                 text: widget.productModel.description,
-                size: 16,
+                size: 16.sp,
                 color: Colors.black54,
               ),
-              Gap(10),
+              Gap(10.h),
               ColorCard(),
-              Gap(16),
+              Gap(16.h),
               SizeCard(),
-              Gap(100),
+              Gap(100.h),
             ],
           ),
         ),

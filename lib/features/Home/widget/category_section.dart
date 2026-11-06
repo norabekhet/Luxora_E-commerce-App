@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
@@ -27,8 +28,8 @@ class _CategorySectionState extends State<CategorySection> {
               });
             },
             child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 30, vertical: 6),
-              margin: EdgeInsets.only(right: 8),
+              padding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 6.h),
+              margin: EdgeInsets.only(right: 8.w),
               decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
@@ -37,7 +38,7 @@ class _CategorySectionState extends State<CategorySection> {
                     offset: Offset(-1, 1),
                   ),
                 ],
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(8.r),
                 color: selected != index
                     ? Color(0xffF4F4F2)
                     : AppColors.primary,
@@ -45,7 +46,7 @@ class _CategorySectionState extends State<CategorySection> {
               child: CustomText(
                 text: category.name,
                 color: selected != index ? Colors.black54 : Colors.white,
-                size: 16,
+                size: 16.sp,
               ),
             ),
           );

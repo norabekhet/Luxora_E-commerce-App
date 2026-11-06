@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
@@ -27,7 +28,7 @@ class _OffersSectionState extends State<OffersSection> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 210,
+      height: 210.h,
       child: PageView.builder(
         onPageChanged: (value) {
           setState(() {
@@ -38,12 +39,14 @@ class _OffersSectionState extends State<OffersSection> {
         itemBuilder: (context, index) {
           final offer = widget.offers[index];
           return Container(
-            margin: EdgeInsets.only(right: 8),
-            decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+            margin: EdgeInsets.only(right: 8.w),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15.r),
+            ),
             child: Stack(
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(15),
+                  borderRadius: BorderRadiusGeometry.circular(15.r),
                   child: Image.asset(
                     "assets/offers.png",
                     width: double.infinity,
@@ -51,7 +54,7 @@ class _OffersSectionState extends State<OffersSection> {
                   ),
                 ),
                 ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(15),
+                  borderRadius: BorderRadiusGeometry.circular(15.r),
                   child: Image.asset(
                     "assets/Gradient.png",
                     width: double.infinity,
@@ -59,36 +62,36 @@ class _OffersSectionState extends State<OffersSection> {
                   ),
                 ),
                 Positioned(
-                  left: 20,
-                  bottom: 20,
+                  left: 20.w,
+                  bottom: 20.h,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(
-                          vertical: 3,
-                          horizontal: 8,
+                          vertical: 3.h,
+                          horizontal: 8.w,
                         ),
                         decoration: BoxDecoration(
                           color: AppColors.scaffoldBackground,
-                          borderRadius: BorderRadius.circular(8),
+                          borderRadius: BorderRadius.circular(8.r),
                         ),
                         child: Center(
                           child: CustomText(
                             text: "ELEGANCE IN EVERY DETAIL",
-                            size: 12,
+                            size: 12.sp,
                           ),
                         ),
                       ),
                       CustomText(
                         text: offer.name,
-                        size: 16,
+                        size: 16.sp,
                         color: Colors.white,
                         maxLines: 1,
                       ),
                       CustomText(
                         text: offer.description,
-                        size: 14,
+                        size: 14.sp,
                         color: Colors.white,
                         maxLines: 1,
                       ),

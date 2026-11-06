@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 
 class CustomButton extends StatelessWidget {
@@ -10,12 +11,12 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 50,
+      height: 50.h,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColors.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadiusGeometry.circular(10),
+            borderRadius: BorderRadiusGeometry.circular(10.r),
           ),
         ),
         onPressed: onpressed,

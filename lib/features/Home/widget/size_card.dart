@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
@@ -18,7 +19,7 @@ class _SizeCardState extends State<SizeCard> {
       color: Colors.white,
       elevation: 5,
       child: Padding(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.r),
         child: Column(
           children: [
             Row(
@@ -26,10 +27,10 @@ class _SizeCardState extends State<SizeCard> {
                 CustomText(
                   text: "Selected Size",
                   color: Colors.black,
-                  size: 20,
+                  size: 18.sp,
                 ),
                 Spacer(),
-                CustomText(text: "Atelier Sizing Guide", size: 14),
+                CustomText(text: "Atelier Sizing Guide", size: 14.sp),
               ],
             ),
             Row(
@@ -42,17 +43,20 @@ class _SizeCardState extends State<SizeCard> {
                     });
                   },
                   child: Container(
-                    margin: EdgeInsets.only(right: 8),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                    margin: EdgeInsets.only(right: 8.w),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 29.w,
+                      vertical: 15.h,
+                    ),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(8),
+                      borderRadius: BorderRadius.circular(8.r),
                       color: selectedSize == index
                           ? AppColors.primary
                           : AppColors.scaffoldBackground,
                     ),
                     child: CustomText(
                       text: size[index],
-                      size: 14,
+                      size: 14.sp,
                       color: selectedSize == index
                           ? Colors.white
                           : AppColors.primary,

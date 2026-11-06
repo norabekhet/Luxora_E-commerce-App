@@ -6,7 +6,6 @@ import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/core/routing/routes.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_cubit.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_states.dart';
-import 'package:luxora_app/features/Auth/view/login_screen.dart';
 import 'package:luxora_app/features/Auth/widget/custom_button.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 

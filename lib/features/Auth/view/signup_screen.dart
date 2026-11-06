@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/core/routing/routes.dart';
@@ -51,41 +52,41 @@ class _SignupScreenState extends State<SignupScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                CustomText(text: "LUXORA", size: 30),
+                CustomText(text: "LUXORA", size: 30.sp),
 
                 Divider(
                   color: AppColors.divider,
-                  indent: 160,
-                  endIndent: 160,
-                  thickness: 2,
+                  indent: 160.w,
+                  endIndent: 160.w,
+                  thickness: 2.h,
                 ),
-                Gap(4),
+                Gap(4.h),
                 CustomText(
                   text: "Timeless style. Effortless elegance.",
                   color: AppColors.secondry,
-                  size: 14,
+                  size: 14.sp,
                 ),
                 Card(
-                  margin: EdgeInsets.all(30),
+                  margin: EdgeInsets.all(30.r),
                   color: Colors.white,
                   elevation: 8,
                   shadowColor: Colors.black,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 32,
-                      horizontal: 24,
+                    padding: EdgeInsets.symmetric(
+                      vertical: 32.h,
+                      horizontal: 24.w,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        CustomText(text: "Create Your Account", size: 24),
+                        CustomText(text: "Create Your Account", size: 24.sp),
                         CustomText(
                           text: "Join LUXORA and discover timeless elegance.",
                           color: AppColors.secondry,
                           weight: FontWeight.w400,
-                          size: 14,
+                          size: 14.sp,
                         ),
-                        Gap(24),
+                        Gap(24.h),
                         Row(
                           children: [
                             Expanded(
@@ -95,7 +96,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                 controller: firstNameController,
                               ),
                             ),
-                            Gap(12),
+                            Gap(12.w),
                             Expanded(
                               child: CustomTextField(
                                 hint: "Vance",
@@ -105,14 +106,14 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                           ],
                         ),
-                        Gap(16),
+                        Gap(16.h),
                         CustomTextField(
                           hint: "name@domain.com",
                           label: "Email Address",
                           prefixIcon: CupertinoIcons.mail,
                           controller: emailController,
                         ),
-                        Gap(16),
+                        Gap(16.h),
                         CustomTextField(
                           prefixIcon: CupertinoIcons.lock,
                           hint: "********",
@@ -121,7 +122,7 @@ class _SignupScreenState extends State<SignupScreen> {
                           controller: passwordController,
                         ),
 
-                        Gap(24),
+                        Gap(24.h),
                         BlocBuilder<AuthCubit, AuthStates>(
                           builder: (context, state) {
                             return CustomButton(
@@ -144,13 +145,13 @@ class _SignupScreenState extends State<SignupScreen> {
                             );
                           },
                         ),
-                        Gap(28),
+                        Gap(28.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CustomText(
                               text: "Already have an account?",
-                              size: 13,
+                              size: 13.sp,
                               color: AppColors.secondry,
                             ),
                             GestureDetector(
@@ -160,7 +161,7 @@ class _SignupScreenState extends State<SignupScreen> {
                                   Routes.loginScreen,
                                 );
                               },
-                              child: CustomText(text: "Sign In", size: 14),
+                              child: CustomText(text: "Sign In", size: 14.sp),
                             ),
                           ],
                         ),

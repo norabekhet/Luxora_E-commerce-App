@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/core/routing/routes.dart';
 import 'package:luxora_app/core/utils/pref_helper.dart';
@@ -34,7 +35,11 @@ class _SplashState extends State<Splash> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: CustomText(text: "LUXORA.", size: 30, color: AppColors.primary),
+        child: CustomText(
+          text: "LUXORA.",
+          size: 30.sp,
+          color: AppColors.primary,
+        ),
       ),
     );
   }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
@@ -18,7 +19,7 @@ class _CategoryCardsState extends State<CategoryCards> {
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
-        childAspectRatio: .73,
+        childAspectRatio: .72,
       ),
       itemCount: widget.category.length,
       itemBuilder: (context, index) {
@@ -28,29 +29,29 @@ class _CategoryCardsState extends State<CategoryCards> {
           elevation: 1.5,
           color: Colors.white,
           child: Padding(
-            padding: const EdgeInsets.all(12),
+            padding: EdgeInsets.all(12.r),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 ClipRRect(
-                  borderRadius: BorderRadiusGeometry.circular(10),
+                  borderRadius: BorderRadiusGeometry.circular(10.r),
                   child: Image.network(
                     category.image,
                     fit: BoxFit.cover,
                     width: double.infinity,
-                    height: 120,
+                    height: 120.h,
                   ),
                 ),
                 Gap(6),
                 CustomText(
                   weight: FontWeight.w600,
-                  size: 20,
+                  size: 20.sp,
                   text: category.name,
                   maxLines: 1,
                 ),
                 CustomText(
                   weight: FontWeight.w400,
-                  size: 14,
+                  size: 14.sp,
                   text: category.description,
                   maxLines: 1,
                 ),
@@ -59,7 +60,7 @@ class _CategoryCardsState extends State<CategoryCards> {
                   children: [
                     CustomText(
                       text: 'HAND-STITCHED',
-                      size: 10,
+                      size: 10.sp,
                       color: AppColors.secondry,
                     ),
                     Spacer(),
@@ -68,7 +69,7 @@ class _CategoryCardsState extends State<CategoryCards> {
                       icon: Icon(
                         CupertinoIcons.star_fill,
                         color: AppColors.primary,
-                        size: 14,
+                        size: 14.r,
                       ),
                     ),
                   ],
