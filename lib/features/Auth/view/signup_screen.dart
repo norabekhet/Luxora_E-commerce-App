@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
+import 'package:luxora_app/core/routing/routes.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_cubit.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_states.dart';
-import 'package:luxora_app/features/Auth/view/login_screen.dart';
-import 'package:luxora_app/features/Auth/view/verify_email_screen.dart';
 import 'package:luxora_app/features/Auth/widget/custom_button.dart';
 import 'package:luxora_app/features/Auth/widget/custom_text_field.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
@@ -33,16 +32,21 @@ class _SignupScreenState extends State<SignupScreen> {
           child: BlocListener<AuthCubit, AuthStates>(
             listener: (context, state) {
               if (state is SignupSuccess) {
-                Navigator.pushReplacement(
+                Navigator.pushReplacementNamed(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) {
-                      return VerifyEmailScreen(
-                        email: emailController.text.trim(),
-                      );
-                    },
-                  ),
+                  Routes.verifyEmailScreen,
+                  arguments: emailController.text.trim(),
                 );
+                // Navigator.pushReplacement(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) {
+                //       return VerifyEmailScreen(
+                //         email: emailController.text.trim(),
+                //       );
+                //     },
+                //   ),
+                // );
               } else if (state is SignupFailure) {
                 ScaffoldMessenger.of(context).showSnackBar(
                   SnackBar(
@@ -161,13 +165,9 @@ class _SignupScreenState extends State<SignupScreen> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushReplacement(
+                                Navigator.pushReplacementNamed(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return LoginScreen();
-                                    },
-                                  ),
+                                  Routes.loginScreen,
                                 );
                               },
                               child: CustomText(text: "Sign In", size: 14),

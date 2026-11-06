@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
+import 'package:luxora_app/core/routing/routes.dart';
 import 'package:luxora_app/features/Home/cubit/category_cubit/cateegory_cubit.dart';
 import 'package:luxora_app/features/Home/cubit/category_cubit/category_states.dart';
 import 'package:luxora_app/features/Home/cubit/offers_cubit/offers_cubit.dart';
 import 'package:luxora_app/features/Home/cubit/offers_cubit/offers_states.dart';
 import 'package:luxora_app/features/Home/cubit/product_cubit/product_cubit.dart';
 import 'package:luxora_app/features/Home/cubit/product_cubit/product_states.dart';
-import 'package:luxora_app/features/Home/view/category_screen.dart';
 import 'package:luxora_app/features/Home/widget/category_section.dart';
 import 'package:luxora_app/features/Home/widget/custom_appBar.dart';
 import 'package:luxora_app/features/Home/widget/offers_section.dart';
@@ -72,14 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Spacer(),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) {
-                            return CategoryScreen();
-                          },
-                        ),
-                      );
+                      Navigator.pushNamed(context, Routes.categoryScreen);
                     },
                     child: CustomText(text: "View All", size: 14),
                   ),

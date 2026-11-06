@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
-import 'package:luxora_app/features/Home/view/details_screen.dart';
+import 'package:luxora_app/core/routing/routes.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
 class ProductSection extends StatefulWidget {
@@ -28,13 +28,10 @@ class _ProductSectionState extends State<ProductSection> {
         final product = widget.products[index];
         return GestureDetector(
           onTap: () {
-            Navigator.push(
+            Navigator.pushNamed(
               context,
-              MaterialPageRoute(
-                builder: (context) {
-                  return DetailsScreen(productModel: product);
-                },
-              ),
+              Routes.detailsScreen,
+              arguments: product,
             );
           },
           child: Card(

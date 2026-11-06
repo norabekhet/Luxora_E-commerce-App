@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
+import 'package:luxora_app/core/routing/routes.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_cubit.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_states.dart';
 import 'package:luxora_app/features/Auth/view/login_screen.dart';
@@ -32,14 +33,7 @@ class _VerifyEmailScreenState extends State<VerifyEmailScreen> {
         child: BlocListener<AuthCubit, AuthStates>(
           listener: (context, state) {
             if (state is VerifySuccess) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return LoginScreen();
-                  },
-                ),
-              );
+              Navigator.pushReplacementNamed(context, Routes.loginScreen);
             } else if (state is VerifyFailure) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(

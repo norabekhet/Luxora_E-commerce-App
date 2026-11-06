@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
+import 'package:luxora_app/core/routing/routes.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_cubit.dart';
 import 'package:luxora_app/features/Auth/cubit/auth_states.dart';
-import 'package:luxora_app/features/Auth/view/signup_screen.dart';
 import 'package:luxora_app/features/Auth/widget/custom_button.dart';
 import 'package:luxora_app/features/Auth/widget/custom_text_field.dart';
-import 'package:luxora_app/features/Home/view/home_screen.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -31,14 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
         body: BlocListener<AuthCubit, AuthStates>(
           listener: (context, state) {
             if (state is LoginSuccess) {
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                  builder: (context) {
-                    return HomeScreen();
-                  },
-                ),
-              );
+              Navigator.pushReplacementNamed(context, Routes.homeScreen);
             }
 
             if (state is LoginFailure) {
@@ -146,13 +138,9 @@ class _LoginScreenState extends State<LoginScreen> {
                             Gap(4),
                             GestureDetector(
                               onTap: () {
-                                Navigator.pushReplacement(
+                                Navigator.pushReplacementNamed(
                                   context,
-                                  MaterialPageRoute(
-                                    builder: (context) {
-                                      return SignupScreen();
-                                    },
-                                  ),
+                                  Routes.signupScreen,
                                 );
                               },
                               child: CustomText(

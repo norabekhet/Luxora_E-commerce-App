@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:luxora_app/core/constant/app_colors.dart';
+import 'package:luxora_app/core/routing/routes.dart';
 import 'package:luxora_app/core/utils/pref_helper.dart';
-import 'package:luxora_app/features/Auth/view/login_screen.dart';
-import 'package:luxora_app/features/Home/view/home_screen.dart';
 import 'package:luxora_app/shared%20widgets/custom_text.dart';
 
 class Splash extends StatefulWidget {
@@ -25,13 +24,9 @@ class _SplashState extends State<Splash> {
 
     if (!mounted) return;
 
-    Navigator.pushReplacement(
+    Navigator.pushReplacementNamed(
       context,
-      MaterialPageRoute(
-        builder: (context) {
-          return isLoggedIn ? HomeScreen() : LoginScreen();
-        },
-      ),
+      isLoggedIn ? Routes.homeScreen : Routes.loginScreen,
     );
   }
 
